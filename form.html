@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html ng-app="angularApp">
+<head>
+	<script type="text/javascript" src="angular.min.js"></script>
+	<title></title>
+</head>
+<style type="text/css">
+select{
+font-size: 20px;
+}
+.sub td{ 
+	text-align: center;
+border: 1px solid black	;
+padding: 5px;
+}
+.address input{
+width: 98%;
+}
+.address td{
+
+border: 1px solid black;
+}
+.address {
+
+	text-align: center;
+border: 1px solid black;
+}
+
+.address textarea{
+	width: 98%;
+	height: 60px;
+}
+.dues td{
+	padding:5px;
+	width: 45%;
+	border: 1px solid black;
+}
+.dues{
+	border:1px solid black;
+}
+.dues input{
+	width: 100%;
+}
+.sem{
+	border: 1px solid black;
+	text-align: center;
+}
+.sem td {
+	border: 1px solid black;
+}
+table{
+	width: 100%;
+}
+.cat td {
+	
+	text-align: center;
+	width: 15%;
+	border-bottom: 1px solid black;
+	border-right: 1px solid black;
+}
+.cat table{
+	border: 1px solid black;
+}
+.cat td td{
+
+	width: auto;
+}
+.cat td input{
+margin: 0px;
+    margin-top: 5px;
+    width: 1.5em;
+    height: 1.5em;
+}
+.personal{
+
+	width: 100%;
+	vertical-align: bottom;
+}
+.personal td{
+	width: auto;
+	padding:10px;
+}
+.personal input{
+	width: 100%;
+	font-size:20px;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid black;
+    border-radius: 5px;
+}
+.RegularSelect{
+	flex: 1; border-right: 1px solid #f1f3f6;cursor: pointer;
+}
+.Selected{
+	flex: 1;background-color: #50505042;border-right: 1px solid #f1f3f6;cursor: pointer;
+}
+.RepeaterSelect{
+	flex: 1;border-left: 1px solid #f1f3f6; cursor: pointer;
+}
+</style>
+
+<body ng-controller="form" style="margin: 10px;background-color: #f1f3f6;" >
+
+<div style="margin: auto;display: flex;width: 100%;height: 20%;text-align: center;">
+
+	<div style="flex:1">
+<img src="H1.png" style=" margin: 25px; height: 80px; width: auto;"></div>
+<div style="flex: 5;">
+<h2 style="font-family: sans-serif; font-size: 21px;
+">Institute of Management Entrepreneurship &amp; Engineering Technology (i MEET)</h2>
+<h2 style="">University of Mumbai</h2>
+</div>
+
+</div>
+
+<div style="width: 100%; padding: 20px; height: 100%;background-color: #ffffff;margin: auto;">
+	<div style="width: 95%; margin:5px;height: 100%;">
+	<!-- 	<div style="border: 1px solid #f1f3f6;margin: auto;display: flex;width: 50%;height: 40px;margin-top: 20px;margin-bottom: 20px;text-align: center;">
+			<div class="{{ bgcolor }}" ng-click="Regular()">
+				<h4 style="margin: 10px;" >Regular</h4>
+			</div>
+			<div class="{{ bgcolor1 }}" ng-click="Repeater()">
+				<h4 style="margin: 10px;" >Repeater (KT)</h4>
+			</div>
+		</div> -->
+		<br><br>
+	<div style="width: 100%;height: auto; margin: auto;">
+			<div style="display: flex;">
+			<div style="flex: 4">
+			<p>
+			To,<br>
+			The Principal<br>
+			Vishwaniketan<br>
+			Institute of Management Entrepreneurship & Engineering Technology (i MEET)<br>
+			Raigad - 401202, Maharashtra<br></p>
+			</div>
+			<div style="flex: auto ; text-align: center;">
+				<img ng-src="{{ filepath }}" alt="" style="height: 100px;width: 100px; border: 1px solid #7e7d7d;"><br>
+				<input type="file" id="filepath" style="width:  176px;"  alt="Upload Image"><br>
+			</div>
+			</div>
+			<div>
+			<p>
+
+			<br>
+			Sir,<br><br>
+			I request permission to present myself for the ensuring examination. I have remitted prescribed fee for the same according and the 
+			information furnished above is correct.<br><br>
+			I hereby declare that since my last appearance at this examination from this College, I have not joined any other College /s for
+			prosecuting studies for this examination, or have not appeared at the said examination of any other University, or have not joined
+			any other University, for this or my other courses.<br>
+			</p>
+			</div><br>
+			<div>
+				<table class="personal">
+					<tbody>
+						<tr>
+							<td><b>Seat No </b></td>
+							<td><input type="text" name="seatNo"></td>
+						</tr>
+						<tr>
+							<td><b>Surname</b></td>
+							<td><input type="text" name="surname"></td>
+							<td><b>First/Own Name<b></td>
+							<td><input type="text"></td>
+						</tr>
+						<tr>
+							<td><b>Father's/Husband's First Name</b></td>
+							<td><input type="text"></td>
+							<td><b>Mothers First Name</b></td>
+							<td><input type="text"></td>
+						</tr>
+						<tr>
+							<td ng-click="gender=''"><b style="cursor: pointer;">Select Gender</b></td>
+							<td ng-show="!gender"><b>  
+								<select ng-model="gender" name="Gender">
+                					<option  value="" selected>Select Gender</option>
+					                <option  value="male">Male</option>
+					                <option value="female">Female</option>
+            					</select> </b>
+            				</td>
+							<td ng-show="gender" ><input  type="text" ng-value="gender"></td>
+							<td ng-click="admission=''"><b style="cursor: pointer;">Admission Type</b></td>
+							<td ng-show="!admission"><b>  
+								<select ng-model="admission" name="admission">
+                					<option  value="" selected>Admission Type</option>
+					                <option  value="Non Provisional">Non Provisional</option>
+					                <option value="Provisional">Provisional</option>
+            					</select> </b>
+            				</td>
+							<td ng-show="admission" ><input  type="text" ng-value="admission"></td>
+						</tr>
+						<tr>
+							<td ng-click="student=''"><b style="cursor: pointer;">Student Type</b></td>
+							<td ng-show="!student"><b>  
+								<select ng-model="student" name="student">
+                					<option  value="" selected>Student Type</option>
+					                <option  value="Student">Student</option>
+					                <option value="Ex Student">Ex Student</option>
+            					</select> </b>
+            				</td>
+							<td ng-show="student" ><input  type="text" ng-value="student"></td>
+							<td></td>
+							<td></td>
+						</tr>
+
+						</tbody>
+				</table><br><br>
+			
+				<br>
+				<br>
+				<!-- Sem Detail -->
+				<div style="display: flex;">
+					<div style="flex: 1 ; height: auto; padding: 5px;">
+						<table class="sem">
+							<style type="text/css">
+								
+							</style>
+							<thead>
+								<tr>
+									<td>Sem</td>
+									<td>Month & <br>Year of <br>Passing</td>
+									<td>Seat No.</td>
+									<td>No.<br>of<br>K.T</td>
+									<td>Reamark<br>(pass/fail)</td>
+								</tr>
+								<tr ng-repeat="s in sem">
+									<td>{{s}}</td>
+									<td ><input style="width: 97%;" type="month" name=""></td>
+									<td><input style="width: 97%;" type="text" name=""></td>
+									<td><input type="number" name="" style="width:97%;"></td>
+									<td><input style="width: 97%;" type="text" name=""></td>
+								</tr>
+							</thead>
+						</table>
+						<div>
+
+				<br>
+				<br>
+							<p>* I request exemptions from appearing in the following subjects as I have obtained in
+								these subjects the required percentage of marks entitling me to exemption at the
+								(Semester........)Examination, particulars of which are given below.
+								
+							</p>
+						</div>
+					</div>
+
+				<br>
+				<br>
+					<div style="flex: 1;  height: auto; padding: 5px;">
+						
+						<table class="dues">
+							<tbody>
+								<tr style=" text-align: center;">
+									<td  colspan="2"><b >NO DEUS CERTIFICATE</b></td>
+								</tr>
+								<tr>
+									<td>DEPT. / AUTHORITY</td>
+									<td>SIGN</td>
+								</tr>
+								<tr>
+									<td>Accounts</td>
+									<td></td>
+								</tr>
+								<tr>
+									<td>Office</td>
+									<td></td>
+								</tr>
+								<tr>
+									<td>Exam Cell Asst.</td>
+									<td></td>
+								</tr>
+							</tbody>
+						</table>
+						<br>
+						<table class="address">
+							<tbody>
+								<tr style="  text-align: center; padding: 5px;">
+									<td style="padding: 5px; border: 1px solid black;" colspan="2"><b >ADDRESS (LOCAL)</b></td>
+								</tr>
+								<tr>
+								<td>
+								Address:	
+								</td>
+								<td>
+									<textarea style="overflow: auto; "></textarea>
+								</td>
+								</tr>
+								<tr>
+									<td>
+										Phone:
+									</td><td>
+									<input type="text" name="">
+								</td>
+								</tr>
+								<tr >
+									<td style="height: 40px;" colspan="2">
+								</td>
+								</tr>
+								<tr>
+									<td colspan="2">
+									<br>
+									Signature of Principal
+								</tr>
+							</td>
+							</tbody>
+						</table>
+					</div>
+
+				</div>
+				<!-- subject Detail -->
+			<!-- 	<select  ng-model="select_branch">
+					<option  ng-repeat="b in branch">
+						{{b}}
+					</option>
+				</select>
+ -->
+				
+				<br>
+
+				<br>
+				<br>
+<select ng-model="select_branch" ng-options="x for x in branch">
+</select>
+<select ng-model="select_sem" ng-options="x for x in sem">
+</select>
+		
+				<br>
+				<div>
+					<table class="sub">
+						<thead>
+							<tr style=" text-align: center;">
+									<td  colspan="7"><b >ENTER EXAMINATION SUBJECT & MARKS WHEREVER APPLICABLE</b></td>
+								</tr>
+							<tr>
+								<td rowspan="3">SUB<br>No.</td>
+								<td rowspan="3">NAME OF THE SUBJECT</td>
+								<td colspan="5">MARKS OBTAINING</td>
+							</tr>
+							<tr>
+								<td colspan="2">Theory</td>
+								<td rowspan="2">T/W</td>
+								<td rowspan="2">PR</td>
+								<td rowspan="2">OR</td>
+							</tr>
+							<tr>
+								<td>ESE</td>
+								<td>IA</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="sub in Subject | filter:select_branch | filter:select_sem">
+								<td>{{$index+1}}</td>
+								<td>{{sub.sub_name}}</td>
+								<td>{{ sub.ese }}</td>
+								<td>{{ sub.ia }}</td>
+								<td>{{ sub.tw }}</td>
+								<td>{{ sub.pr }}</td>
+								<td>{{ sub.or }}</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+	</div>
+	</div>
+
+
+</div>
+
+</body>
+<script type="text/javascript">
+
+	angular.module("angularApp",[]).controller("form",function($scope){
+		$scope.filepath="icon.png";
+		 $scope.bgcolor1="RepeaterSelect";
+  	$scope.Regular= function(){ 
+  		$scope.bgcolor="Selected";
+		$scope.bgcolor1="RepeaterSelect";
+	}
+$scope.select_branch="Select branch";
+$scope.select_sem="Select Sem";
+$scope.gender="";
+$scope.admission="";
+$scope.student="";
+$scope.Subject=[
+{dept:'Computer',sem:' I ',sub_name:'System Programming and Compiler Construction',ese:50,ia:16,tw:24,pr:25,or:25},
+{dept:'Computer',sem:' II ',sub_name:'Software Engineering',ese:50,ia:16,tw:24,pr:25,or:25},
+{dept:'Computer',sem:' III ',sub_name:'Distributed Databases',ese:50,ia:16,tw:24,pr:25,or:25},
+{dept:'Computer',sem:' IV ',sub_name:'Mobile Communication and Computing ',ese:50,ia:16,tw:24,pr:25,or:25},
+{dept:'Computer',sem:' V ',sub_name:'Network Programming Laboratory',ese:'-',ia:'-',tw:24,pr:'-',or:50}
+];
+
+
+	$scope.Repeater=function(){
+$scope.bgcolor1="Selected";
+$scope.bgcolor="RegularSelect";
+	}
+	$scope.branch=['Computer','Mechanical','Civil','E&TC','Electrical'];
+	$scope.sem=[' I ',' II ',' III ',' IV ',' V ' ];
+	$scope.subjects=[];
+	});
+</script>
+</html>
